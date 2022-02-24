@@ -1,0 +1,12 @@
+REPOSITORY                 TAG       IMAGE ID       CREATED        SIZE
+elistratkin/custom-nginx   latest    4c103ab82246   3 weeks ago    12.8MB
+<none>                     <none>    d0581f6dd12c   3 weeks ago    12.9MB
+<none>                     <none>    0510b751566a   3 weeks ago    13.1MB
+<none>                     <none>    999ef6383cbb   3 weeks ago    9.69MB
+<none>                     <none>    c7e80f2cde15   3 weeks ago    9.69MB
+<none>                     <none>    c477674a30c6   3 weeks ago    9.52MB
+<none>                     <none>    f0b88cb44df3   3 weeks ago    9.69MB
+<none>                     <none>    32a306a5c789   3 weeks ago    9.69MB
+nginx                      latest    cbdb27143caa   4 weeks ago    9.69MB
+alpine                     latest    c059bfaa849c   2 months ago   5.59MB
+hello-world                latest    feb5d9fea6a5   5 months ago   13.3kB
