@@ -49,7 +49,7 @@ branch review:
                 url: http://$CI_ENVIROMNENT_SLUG.example.com
         only:
                 - branches
-        expect:
+        except:
                 - master
 
 staging:
