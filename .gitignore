@@ -8,3 +8,4 @@ packer/variables.json
 .terraform/
 *.retry
 *.prod
+.env
