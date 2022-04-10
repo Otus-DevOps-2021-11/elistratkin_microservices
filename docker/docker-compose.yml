@@ -12,7 +12,7 @@ services:
                                         - post_db
                                         - comment_db
         ui:
-                build: ../src/ui
+#                build: ../src/ui
                 image: ${USER_NAME}/ui:2.0
                 environment:
                         - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
@@ -28,7 +28,7 @@ services:
                           fluentd-address: localhost:24224
                           tag: service.ui
         post:
-                build: ../src/post-py
+#                build: ../src/post-py
                 image: ${USER_NAME}/post:1.0
                 environment:
                         - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
@@ -47,7 +47,7 @@ services:
                           fluentd-address: localhost:24224
                           tag: service.post
         comment:
-                build: ../src/comment
+#                build: ../src/comment
                 image: ${USER_NAME}/comment:1.0
                 environment:
                         - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
