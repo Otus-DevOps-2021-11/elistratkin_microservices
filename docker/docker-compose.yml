@@ -2,6 +2,8 @@ version: '3.3'
 services:
         post_db:
                 image: mongo:3.2
+                environment:
+                        - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
                 volumes:
                         - post_db:/data/db
                 networks:
@@ -10,25 +12,45 @@ services:
                                         - post_db
                                         - comment_db
         ui:
-                build: ../src/ui
-                image: ${USER_NAME}/ui:2.0
+#                build: ../src/ui
+                image: ${USER_NAME}/ui:2.0:logging
+                environment:
+                        - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
                 ports:
                         - ${publ_port}:${publ_port}/tcp
                 networks:
                         - front_net
                 env_file:
                         - .env
+                logging:
+                        driver: "fluentd"
+                        options:
+                          fluentd-address: localhost:24224
+                          tag: service.ui
         post:
-                build: ../src/post-py
-                image: ${USER_NAME}/post:1.0
+#                build: ../src/post-py
+                image: ${USER_NAME}/post:1.0:logging
+                environment:
+                        - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
                 networks:
                         - front_net
                         - back_net
                 env_file:
                         - .env
+                depends_on:
+                        - post_db
+                ports:
+                        - "5000:5000"
+                logging:
+                        driver: "fluentd"
+                        options:
+                          fluentd-address: localhost:24224
+                          tag: service.post
         comment:
-                build: ../src/comment
-                image: ${USER_NAME}/comment:1.0
+#                build: ../src/comment
+                image: ${USER_NAME}/comment:1.0:logging
+                environment:
+                        - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
                 networks:
                         - front_net
                         - back_net
